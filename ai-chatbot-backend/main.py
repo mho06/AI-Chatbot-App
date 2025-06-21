@@ -11,6 +11,8 @@ from auth import (
     hash_password, verify_password, create_access_token, decode_token,
     SECRET_KEY, ALGORITHM
 )
+import httpx
+
 
 HISTORY_FILE = "chat_history.json"
 
@@ -28,7 +30,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 # In-memory user & chat database
 fake_users_db = {}
 chat_db = {}
@@ -155,6 +156,8 @@ async def chat_send(request: Request, body: ChatSessionRequest):
     url = "https://openrouter.ai/api/v1/chat/completions"
     headers = {
         "Authorization": f"Bearer {API_KEY}",
+        "HTTP-Referer": "http://localhost:3000",  # required by OpenRouter
+        "X-Title": "AI Chatbot App",              # required by OpenRouter
         "Content-Type": "application/json"
     }
 
@@ -167,17 +170,22 @@ async def chat_send(request: Request, body: ChatSessionRequest):
     }
 
     try:
-        response = requests.post(url, headers=headers, json=payload)
+        async with httpx.AsyncClient() as client:
+            response = await client.post(url, headers=headers, json=payload)
+
         if response.status_code != 200:
+            print("OpenRouter response:", response.text)
             return {"error": f"OpenRouter error: {response.text}"}
+
         result = response.json()
         reply = result["choices"][0]["message"]["content"]
 
-        # Save messages to chat history
+        # Save to history
         user_chats[body.chat_id].append({"sender": "user", "text": body.message})
         user_chats[body.chat_id].append({"sender": "ai", "text": reply.strip()})
         save_history()
 
         return {"reply": reply.strip()}
+
     except Exception as e:
         return {"error": str(e)}

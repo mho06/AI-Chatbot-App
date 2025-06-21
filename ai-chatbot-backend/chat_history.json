@@ -127,7 +127,10 @@
     "118e1c86-a7f8-4393-9073-df503923a652": [],
     "8479d67c-7ad6-4416-bb27-8c4514374a3d": [],
     "64bf2ff2-dc61-4ae0-826b-332082bc0815": [],
-    "a2b74257-83c4-417d-8d76-329d11f7877f": []
+    "a2b74257-83c4-417d-8d76-329d11f7877f": [],
+    "43f8c42e-312a-46fe-9417-f2ea43485a5e": [],
+    "505bbc72-1936-410c-a0d7-826d437a854f": [],
+    "f9e88fed-4a44-4b8f-903b-c2e741381e0e": []
   },
   "Mohammed": {
     "f3cad0cc-90e8-435e-9841-612aafc30381": [
@@ -209,5 +212,32 @@
   },
   "Hassan Osman": {
     "57d24fc4-fa7b-4d57-808f-debaa7c50874": []
+  },
+  "Jana": {
+    "5c265c00-b28b-43d2-94c4-0beed74fa671": [],
+    "c34d980e-5768-490b-8bc8-6a2b5ed43a84": [],
+    "70a08918-c36b-4679-97a9-71c752a7b8f5": [],
+    "05d23efb-1de4-4308-b2ce-6668ca570cba": []
+  },
+  "mho06": {
+    "2761e0f6-c2ab-47bd-838b-bc0e7c0f72a9": [],
+    "c1956808-6434-4de9-a837-61d7ed37f155": [
+      {
+        "sender": "user",
+        "text": "Hello Chat"
+      },
+      {
+        "sender": "ai",
+        "text": "Hello! I'm here to help you with any questions or tasks you might have. How can I assist you today?"
+      },
+      {
+        "sender": "user",
+        "text": "Who are you exactly?"
+      },
+      {
+        "sender": "ai",
+        "text": "I am a model from Mistral AI, designed to provide helpful responses to a wide range of questions and tasks. I don't have personal experiences, emotions, or a physical form, as I am a program running on computer servers. I was created to assist users like you with information, answers, and problem-solving strategies."
+      }
+    ]
   }
 }
